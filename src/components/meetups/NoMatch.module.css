@@ -1,0 +1,11 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.root > h3 {
+    font-size: 200px;
+    margin-bottom: 0px;
+}
