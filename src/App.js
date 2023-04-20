@@ -1,36 +1,27 @@
-import { useState } from "react";
-
+import MainNavigation from "./components/layout/MainNavigation";
 import AllMeetupsPage from "./pages/AllMeetupsPage";
 import FavoritesPage from "./pages/Favorites";
 import NewMeetupsPage from "./pages/NewMeetup";
-import { ALL_MEETUP_PAGE, FAVORITES_PAGE, NEW_MEETUP_PAGE } from "./utils/constants";
-
-import MainNavigation from "./components/layout/MainNavigation";
+import  NoMatchScreen  from "./pages/NoMatchScreen";
 import Layout from "./components/layout/Layout";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [page, setPage] = useState(ALL_MEETUP_PAGE);
-
-  function getCurrentPageComponent() {
-    let currentPageComponent = <AllMeetupsPage />;
-    switch (page) {
-      case FAVORITES_PAGE:
-        currentPageComponent = <FavoritesPage />;
-        break;
-      case NEW_MEETUP_PAGE:
-        currentPageComponent = <NewMeetupsPage />;
-        break;
-      default:
-        currentPageComponent = <AllMeetupsPage />;
-    }
-
-    return currentPageComponent;
-  }
-
   return (
     <div data-test="app">
-      <MainNavigation setPage={setPage} />
-      <Layout>{getCurrentPageComponent()}</Layout>
+      <MainNavigation />
+      <Layout> 
+        <Routes>
+            <Route exact path="/" element={<AllMeetupsPage />} />
+            <Route exact path="favorites" element={<FavoritesPage />} />
+            <Route exact path="meetup-form" element={<NewMeetupsPage />} />
+
+            {/* Using path="*"" means "match anything", so this route
+                  acts like a catch-all for URLs that we don't have explicit
+                  routes for. */}
+            <Route path="*" element={<NoMatchScreen />} />
+        </Routes>
+      </Layout>
     </div>
   );
 }
