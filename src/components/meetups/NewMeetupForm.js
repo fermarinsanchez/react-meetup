@@ -15,7 +15,10 @@ const NewMeetupForm = () => {
     id: Math.random() * 10
   });
 
+  const [isCreated, setIsCreated] = useState(false)
+
   const handleChange = (e) => {
+    setIsCreated(false)
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
@@ -23,8 +26,9 @@ const NewMeetupForm = () => {
     e.preventDefault();
     dispatch(addMeetup(values));
     setValues({ title: '', image: '', address: '', description: '' });
+    setIsCreated(true)
   };
-  // https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+
   return (
     <Card>
       <form className={classes.form} onSubmit={handleSubmit}>
@@ -73,6 +77,8 @@ const NewMeetupForm = () => {
           ></textarea>
         </div>
         <div className={classes.actions}>
+          {isCreated ? <div className={classes.created}>New Meetup created!</div> : <div></div>}
+
           <button type="submit">Add Meetup</button>
         </div>
       </form>
