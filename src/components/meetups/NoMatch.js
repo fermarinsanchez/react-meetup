@@ -7,7 +7,7 @@ const NoMatch = () => {
         <div className={classes.root}>
             <h3>404</h3>
             <p>We couldn't find this page.</p>
-            <p>Please, go back to <Link to ='/'>React Meetups</Link></p>
+            <p>Please, go back to <Link to='/'>React Meetups</Link></p>
 
         </div>
     )

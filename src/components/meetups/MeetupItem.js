@@ -4,12 +4,12 @@ import { addFavorite, removeFavorite } from "../../actions/index";
 import classes from "./MeetupItem.module.css";
 import Card from "../ui/Card";
 
-export default function MeetupItem({data, section, isFavorite}) {
+export default function MeetupItem({ data, section, isFavorite }) {
 
   const dispatch = useDispatch()
   const isFavoriteSection = section === 'favs'
   return (
-    <li className={classes.item} data-test='meet-up-item'>
+    <div className={classes.item} data-test='meet-up-item'>
       <Card>
         <div className={classes.image}>
           <img src={data.image} alt={data.title} />
@@ -20,14 +20,14 @@ export default function MeetupItem({data, section, isFavorite}) {
           <p>{data.description}</p>
         </div>
         <div className={classes.actions}>
-          {isFavorite &&  <div className={classes.fav} disabled>FAVORITE!</div>}
-          {isFavoriteSection ? 
+          {isFavorite && <div className={classes.fav} disabled>FAVORITE!</div>}
+          {isFavoriteSection ?
             <button onClick={() => dispatch(removeFavorite(data))}>Remove from favorites</button>
             :
-            isFavorite ?  null : <button onClick={() => dispatch(addFavorite(data))}>Add to favorites</button>
-            }
+            isFavorite ? null : <button onClick={() => dispatch(addFavorite(data))}>Add to favorites</button>
+          }
         </div>
       </Card>
-    </li>
+    </div>
   );
 }
