@@ -23,8 +23,19 @@
 }
 
 .actions {
+  display: flex;
+  justify-content: space-between;
   margin-top: 1rem;
   text-align: right;
+}
+
+.actions .created {
+  background-color: seagreen;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  border: 1px solid seagreen;
 }
 
 .actions button {
