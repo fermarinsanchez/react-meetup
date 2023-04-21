@@ -19,7 +19,7 @@ export default function AllMeetupsPage() {
   useEffect(() => {
     data?.forEach((meetup) => {
       const alreadyAdded = meetups.some((m) => m.id === meetup.id);
-  
+
       if (!alreadyAdded) {
         dispatch(addMeetup(meetup));
       }
@@ -29,9 +29,10 @@ export default function AllMeetupsPage() {
     <section>
       <h1>All Meetups</h1>
       <ul className={classes.list}>
-      {meetups?.map((meetup, index) =>  {
-        const isFavorite = favorites.includes(meetup)
-        return <MeetupItem data={meetup} key={`meetup-${index}`} isFavorite={isFavorite}/>})}
+        {meetups?.map((meetup, index) => {
+          const isFavorite = favorites.includes(meetup)
+          return <MeetupItem data={meetup} key={`meetup-${index}`} isFavorite={isFavorite} />
+        })}
       </ul>
     </section>
   );

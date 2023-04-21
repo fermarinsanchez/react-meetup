@@ -16,7 +16,7 @@ export default function FavoritesPage() {
           <p>Go to <Link to='/'>All Meetups</Link> section and add some favorites</p>
         </>
       )}
-      {favorites?.map((fav, index) =>  <MeetupItem data={fav} key={`meetup-${index}`} section={'favs'}/>)}
+      {favorites?.map((fav, index) => <MeetupItem data={fav} key={`meetup-${index}`} section={'favs'} />)}
     </section>
   );
 }

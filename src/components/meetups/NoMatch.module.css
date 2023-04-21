@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.root > h3 {
+.root>h3 {
     font-size: 200px;
     margin-bottom: 0px;
 }

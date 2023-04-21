@@ -12,7 +12,7 @@ const NewMeetupForm = () => {
     image: '',
     address: '',
     description: '',
-    id: Math.random()  * 10
+    id: Math.random() * 10
   });
 
   const handleChange = (e) => {
@@ -24,7 +24,7 @@ const NewMeetupForm = () => {
     dispatch(addMeetup(values));
     setValues({ title: '', image: '', address: '', description: '' });
   };
-// https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
+  // https://images.pexels.com/photos/1619317/pexels-photo-1619317.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
   return (
     <Card>
       <form className={classes.form} onSubmit={handleSubmit}>

@@ -1,7 +1,7 @@
 import React from 'react'
 import NoMatch from '../components/meetups/NoMatch'
 
- const NoMatchScreen = () => {
+const NoMatchScreen = () => {
     return (
         <div>
             <NoMatch />
