@@ -9,7 +9,7 @@ export default function MeetupItem({ data, section, isFavorite }) {
   const dispatch = useDispatch()
   const isFavoriteSection = section === 'favs'
   return (
-    <div className={classes.item} data-test='meet-up-item'>
+    <div className={classes.item} data-testid='meet-up-item'>
       <Card>
         <div className={classes.image}>
           <img src={data.image} alt={data.title} />
