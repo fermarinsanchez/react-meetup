@@ -4,10 +4,11 @@ import { addMeetup } from "../actions/index";
 import { useFetch } from "../util-hooks/useFetch";
 import MeetupItem from "../components/meetups/MeetupItem";
 import classes from "./../components/meetups/MeetupList.module.css";
+import Spinner from "../components/ui/Spinner";
 
 
 export default function AllMeetupsPage() {
-  const { data } = useFetch({
+  const { data, isLoading } = useFetch({
     url: "/data.json",
   });
 
@@ -28,11 +29,17 @@ export default function AllMeetupsPage() {
   return (
     <section>
       <h1>All Meetups</h1>
+
       <ul className={classes.list}>
-        {meetups?.map((meetup, index) => {
-          const isFavorite = favorites.includes(meetup)
-          return <MeetupItem data={meetup} key={`meetup-${index}`} isFavorite={isFavorite} />
-        })}
+        {isLoading ?
+          <div className={classes.spinner_root}>
+            <Spinner />
+          </div>
+          :
+          meetups?.map((meetup, index) => {
+            const isFavorite = favorites.includes(meetup)
+            return <MeetupItem data={meetup} key={`meetup-${index}`} isFavorite={isFavorite} />
+          })}
       </ul>
     </section>
   );

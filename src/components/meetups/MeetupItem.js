@@ -12,7 +12,7 @@ export default function MeetupItem({ data, section, isFavorite }) {
     <div className={classes.item} data-testid='meet-up-item'>
       <Card>
         <div className={classes.image}>
-          <img src={data.image} alt={data.title} />
+          <img src={data.image} alt={data.title} loading="lazy" />
         </div>
         <div className={classes.content}>
           <h3>{data.title}</h3>
