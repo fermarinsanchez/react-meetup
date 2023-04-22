@@ -29,23 +29,38 @@ describe('AllMeetupsPage', () => {
         expect(headingElement).toBeInTheDocument();
     });
 
-    test('renders the list of meetups', () => {
+    test('renders the Spinner waiting for meetups', () => {
         const store = mockStore({
             meetups: mockMeetups,
             favorites: mockFavorites
-        });
+        })
 
         render(
             <Provider store={store}>
                 <AllMeetupsPage />
             </Provider>
         )
+        const spinner = screen.getByText('Loading ...');
+        expect(spinner).toBeInTheDocument();
+    });
 
+    test('renders the list of meetups', async () => {
+        const store = mockStore({
+            meetups: mockMeetups,
+            favorites: mockFavorites
+        })
+
+        render(
+            <Provider store={store}>
+                <AllMeetupsPage />
+            </Provider>
+        )
+        await screen.findAllByTestId('meet-up-item');
         const meetupItems = screen.getAllByTestId('meet-up-item');
         expect(meetupItems.length).toBe(mockMeetups.length);
     });
 
-    test('displays favorite text for favorite meetups', () => {
+    test('displays favorite text for favorite meetups', async () => {
         const store = mockStore({
             meetups: mockMeetups,
             favorites: mockFavorites
@@ -56,7 +71,7 @@ describe('AllMeetupsPage', () => {
                 <AllMeetupsPage />
             </Provider>
         );
-
+        await screen.findAllByTestId('meet-up-item');
         const favoriteIcon = screen.getByText('FAVORITE!');
         expect(favoriteIcon).toBeInTheDocument();
     });
