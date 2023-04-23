@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Clone this repository
+
+- Click on green button with "CODE" text and copy the link of this repository.
+- Go to your terminal and type "git clone link_to_the_repository"
+- After download it, type "npm install" to download all the packages from "package.json".
+- Then, you have all this available scripts:
+
 ## Available Scripts
 
 In the project directory, you can run:
